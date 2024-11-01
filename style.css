@@ -19,17 +19,19 @@
 }
 :root {
   /* font-family: "Poppins", sans-serif; */
+  --Text-Font: 'Satisfy', cursive;
   --Clock-Font: 'Oxanium', sans-serif;
 }
 .html {
   height: 100%;
   width: 100%;
 }
+/* #222021, #24292e */
 .body {
-  /* object-fit: contain; */
   width: 100%;
   height: 100%;
-  background-color: black;
+  background: linear-gradient(to left top, #161a1e 10%, #262a2e 90%);
+  background-color: #111417;
   display: flex;
   flex-direction: column;
   justify-content: space-evenly;
@@ -39,9 +41,14 @@
   position: relative;
   display: flex;
   justify-content: center;
-  align-items: center;
+  padding-top: 10%;
+  align-items: start;
   width: 80%;
-  height: 20%;
+  height: 45%;
+  border-radius: 8%;
+  box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.384);
+  background: linear-gradient(to left top, #161b1e 10%, #31363b 90%);
+  opacity: 90%;
 }
 .glow {
   position: absolute;
@@ -78,44 +85,101 @@
   z-index: 1;
   font-family: var(--Clock-Font);
   color: rgb(255, 255, 255);
-  /* height: 100%; */
+
   scale: 2.3;
   background-clip: text;
   -webkit-text-fill-color: transparent;
 }
+.neonClockContainer hr {
+  position: absolute;
+  top: 30%;
+  width: 90%;
+  border-color: #ff1ec6;
+}
+.neonForecastContainer {
+  position: absolute;
+  /* background-color: #00ff66; */
+  top: 40%;
+  height: 50%;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+}
+.neonForecasts {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 49%;
+  height: 100%;
+  /* background-color: #099fff; */
+}
+.neonForecasts {
+  font-family: var(--Text-Font);
+  color: #c45bfe;
+  scale: 1.2;
+}
+.neonForecasts p {
+  color: #099fff;
+}
+.neonForecasts svg {
+  color: #e6fb04;
+  height: 30%;
+}
 .forecastContainer {
-  transform: translate(0%, 100%);
+  /* background-color: #00ff66; */
+  border-radius: 8%;
   display: flex;
   justify-content: space-evenly;
   align-items: center;
-  width: 100%;
-  height: 20%;
+  width: 80%;
+  height: 40%;
   gap: 2%;
+  background: linear-gradient(to left top, #161b1e 10%, #31363b 90%);
+  box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.384);
+  opacity: 90%;
 }
-.weatherCard {
-  background-color: rgba(8, 8, 8, 0.5);
-  border-radius: 10%;
-  height: 100%;
-  width: 25%;
-}
-.searchBar {
-  width: 65%;
-  height: 5%;
-  background-color: rgba(8, 8, 8, 0.411);
-  border-radius: 10%;
-  margin-top: 55%;
-}
-.backGroundOpacity {
+
+.blotContainer {
   position: absolute;
-  background-color: #48484841;
-  height: 100%;
   width: 100%;
-  z-index: -1;
-  opacity: 15%;
-  background: linear-gradient(#00000054, #cacaca);
+  height: 100%;
+  background: linear-gradient(to left top, #161a1e 10%, #262a2e 90%);
+  mix-blend-mode: screen;
+  z-index: -2;
 }
-/* .background {
+.blot {
+  /* right: 10%; */
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background-image: url(./images/blotinverted.png);
+  /* background-size: contain; */
+  background-position: center;
+  mix-blend-mode: multiply;
+  object-fit: contain;
+  z-index: -3;
+}
+.whiteBG {
+  width: 100%;
   height: 100%;
   position: absolute;
-  z-index: -2;
-} */
+  /* background-image: url(./images/Sunnyboat.jpg); */
+  background-position: center;
+  background-size: contain;
+  background-repeat: no-repeat;
+  /* background-color: #331dff; */
+  background: linear-gradient(
+    45deg,
+    #e6fb04,
+    #ff6600,
+    #00ff66,
+    #00ffff,
+    #ff00ff,
+    #ff0099,
+    #6e0dd0,
+    #ff3300,
+    #099fff
+  );
+  z-index: -4;
+}
