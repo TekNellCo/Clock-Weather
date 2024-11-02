@@ -121,23 +121,48 @@
 }
 .neonForecasts p {
   color: #099fff;
+  scale: 1.4;
 }
 .neonForecasts svg {
   color: #e6fb04;
   height: 30%;
 }
-.forecastContainer {
+.bottomContainer {
   /* background-color: #00ff66; */
   border-radius: 8%;
   display: flex;
-  justify-content: space-evenly;
-  align-items: center;
-  width: 80%;
-  height: 40%;
+  overflow: hidden;
+
+  width: 90%;
+  height: 20%;
   gap: 2%;
   background: linear-gradient(to left top, #161b1e 10%, #31363b 90%);
   box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.384);
   opacity: 90%;
+}
+.bottomContainer button {
+  cursor: pointer;
+  border: none;
+  background-color: #272a2f;
+  /* background-color: red; */
+  height: 100%;
+  width: 100%;
+}
+
+.location svg {
+  height: 40%;
+  width: 100%;
+  color: #ff00ff;
+}
+.theme svg {
+  height: 30%;
+  width: 100%;
+  color: #099fff;
+}
+.lang svg {
+  height: 30%;
+  width: 100%;
+  color: #00ff66;
 }
 
 .blotContainer {
