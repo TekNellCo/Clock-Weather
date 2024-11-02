@@ -28,7 +28,6 @@ city.addEventListener('click', () => {
 });
 theme.addEventListener('click', () => {
   let imageNum = 0;
-
   themes.forEach((theme) => {
     if (theme.children.length > 0) {
       theme.innerHTML = '';
