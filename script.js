@@ -76,12 +76,44 @@ lang.addEventListener('click', () => {
   });
 });
 
+/////////////////Theme Functions replace colors
+
+let splashColor = document.querySelector('.whiteBG');
+let clockGradient = document.querySelector('.clockTime');
+let bodyBackground = document.querySelector('.body');
+let bottomContainer = document.querySelector('.bottomContainer');
+let neonContainer = document.querySelector('.neonClockContainer');
+let svgOne = document.querySelector('.svgOne');
+let svgTwo = document.querySelector('.svgTwo');
+let svgThree = document.querySelector('.svgThree');
+let days = document.querySelectorAll('.days');
+
 function rainbowTheme() {
-  console.log('Rainbow');
+  clockGradient.className = 'clockTime';
+  splashColor.style = 'background : var(--Rainbow-Gradient)';
+  bodyBackground.style = 'background: var(var(--Black-Background))';
+  bottomContainer.style = 'background: var(--Black-Container)';
+  neonContainer.style = 'background: var(--Black-Container)';
+  svgOne.style = 'color: #ff00ff';
+  svgTwo.style = 'color: #099fff';
+  svgThree.style = 'color:#00ff66';
+  days.forEach((day) => {
+    day.style = 'color:#c45bfe';
+  });
 }
 function blueCreamTheme() {
-  console.log('BlueCream');
+  clockGradient.className = 'clockTimeTwo';
+  splashColor.style = 'background : var(--Heart-Background)';
+  bodyBackground.style = 'background: var(--Purple-Background)';
+  bottomContainer.style = 'background: var(--Purple-Container)';
+  neonContainer.style = 'background: var(--Purple-Container)';
+  svgOne.style = 'fill :#ffffff';
+  svgTwo.style = 'fill :#ffffff';
+  svgThree.style = 'fill:#ffffff';
+  days.forEach((day) => {
+    day.style = 'color:#ffffff';
+  });
 }
-function lightTheme() {
-  console.log('Light');
-}
+///////////////green
+// #39af5e
+function lightTheme() {}
