@@ -370,15 +370,34 @@
 }
 .languages {
   position: absolute;
-  background-color: red;
   width: 0%;
   height: 0%;
 }
-.languagesAfter {
+/* .languagesAfter {
+  display: inline-block;
   z-index: 2;
   width: 80%;
-  height: 20%;
+  height: 80%;
   transition: ease-in 0.1s;
+  background-color: red;
+} */
+.english {
+  display: none;
+  background-color: #00ff66;
+  width: 40%;
+  height: 100%;
+}
+.spanish {
+  display: none;
+  background-color: #2600ff;
+  width: 40%;
+  height: 100%;
+}
+.thai {
+  display: none;
+  background-color: #ff000d;
+  width: 40%;
+  height: 100%;
 }
 .red {
   fill: red;

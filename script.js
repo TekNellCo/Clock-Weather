@@ -7,12 +7,10 @@ const searchBar = document.querySelector('.searchBar');
 const themePopUp = document.querySelector('.themePopUp');
 const themes = document.querySelectorAll('.themes');
 const languagePopUp = document.querySelector('.languagePopUp');
-const languages = document.querySelector('.languages');
+const languagePopUpAfter = document.querySelector('.languagesPopUpAfter');
+// const languages = document.querySelector('.languages');
 const image = document.querySelector('.image');
 let imageNum = 0;
-
-// const test = document.querySelector('.test');
-// test.style = 'color: red';
 
 ///////adds css classes to popups while resetting other buttons
 city.addEventListener('click', () => {
@@ -20,8 +18,9 @@ city.addEventListener('click', () => {
   searchBar.classList.toggle('searchBarAfter');
   themes.className = 'themes';
   themePopUp.className = 'themePopUp';
-  languages.className = 'languages';
+  // languages.className = 'languages';
   languagePopUp.className = 'languagePopUp';
+  hideLanguage();
   themes.forEach((theme) => {
     theme.classList.remove('themesAfter');
     theme.classList.remove('one');
@@ -34,6 +33,7 @@ theme.addEventListener('click', () => {
       theme.innerHTML = '';
     } else {
     }
+    hideLanguage();
     imageNum++;
     theme.classList.toggle('themesAfter');
     // theme.classList.toggle('one');
@@ -59,13 +59,13 @@ theme.addEventListener('click', () => {
   themePopUp.classList.toggle('themePopUpAfter');
   searchBar.className = 'searchBar';
   locationPopUp.className = 'locationPopUp';
-  languages.className = 'languages';
+  // languages.className = 'languages';
   languagePopUp.className = 'languagePopUp';
 });
 
 lang.addEventListener('click', () => {
   languagePopUp.classList.toggle('languagePopUpAfter');
-  languages.classList.toggle('languagesAfter');
+  // languages.classList.toggle('languagesAfter');
   searchBar.className = 'searchBar';
   locationPopUp.className = 'locationPopUp';
   themes.className = 'themes';
@@ -74,6 +74,11 @@ lang.addEventListener('click', () => {
     theme.classList.remove('themesAfter');
     theme.classList.remove('one');
   });
+  if (languagePopUp.children.length > 0) {
+    hideLanguage();
+  } else {
+    languageChange();
+  }
 });
 
 /////////////////Theme Functions replace colors
@@ -87,6 +92,9 @@ let svgOne = document.querySelector('.svgOne');
 let svgTwo = document.querySelector('.svgTwo');
 let svgThree = document.querySelector('.svgThree');
 let days = document.querySelectorAll('.days');
+let hr = document.querySelector('.hr');
+let sun = document.querySelectorAll('.sun');
+let temp = document.querySelectorAll('.temp');
 
 function rainbowTheme() {
   clockGradient.className = 'clockTime';
@@ -99,6 +107,14 @@ function rainbowTheme() {
   svgThree.style = 'color:#00ff66';
   days.forEach((day) => {
     day.style = 'color:#c45bfe';
+  });
+  hr.style = 'border-color: #ff1ec6';
+  hr.style = 'border-color: #b41eff';
+  sun.forEach((suns) => {
+    suns.style = 'color:#e6fb04';
+  });
+  temp.forEach((temps) => {
+    temps.style = 'color: #099fff';
   });
 }
 function blueCreamTheme() {
@@ -113,7 +129,47 @@ function blueCreamTheme() {
   days.forEach((day) => {
     day.style = 'color:#ffffff';
   });
+  hr.style = 'border-color: #b41eff';
+  sun.forEach((suns) => {
+    suns.style = 'color:#ff1ec6';
+  });
+  temp.forEach((temps) => {
+    temps.style = 'color: white';
+  });
 }
 ///////////////green
 // #39af5e
 function lightTheme() {}
+
+///////Adds popup selection for languages and triggers functions for language change
+function languageChange() {
+  let english = document.createElement('div');
+  const spanish = document.createElement('div');
+  const thai = document.createElement('div');
+
+  languagePopUp.innerHTML = '';
+
+  languagePopUp.append(english);
+  languagePopUp.append(spanish);
+  languagePopUp.append(thai);
+
+  english.className = 'english';
+  spanish.className = 'spanish';
+  thai.className = 'thai';
+
+  english.style = 'display : inline';
+  spanish.style = 'display : inline';
+  thai.style = 'display : inline';
+}
+
+function hideLanguage() {
+  languagePopUp.innerHTML = '';
+}
+
+/////Manipulates text on dom to specific languages
+
+function englishLanguage() {}
+
+function spanishLanguage() {}
+
+function thaiLanguage() {}
