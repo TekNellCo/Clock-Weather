@@ -9,6 +9,7 @@ const themes = document.querySelectorAll('.themes');
 const languagePopUp = document.querySelector('.languagePopUp');
 const languages = document.querySelector('.languages');
 const image = document.querySelector('.image');
+let imageNum = 0;
 
 // const test = document.querySelector('.test');
 // test.style = 'color: red';
@@ -27,7 +28,7 @@ city.addEventListener('click', () => {
   });
 });
 theme.addEventListener('click', () => {
-  let imageNum = 0;
+  imageNum = 0;
   themes.forEach((theme) => {
     if (theme.children.length > 0) {
       theme.innerHTML = '';
@@ -35,11 +36,25 @@ theme.addEventListener('click', () => {
     }
     imageNum++;
     theme.classList.toggle('themesAfter');
-    theme.classList.toggle('one');
+    // theme.classList.toggle('one');
+    // theme.classList.toggle(imageNum);
     let img = document.createElement('div');
     theme.append(img);
     img.className = 'image';
+    img.classList.toggle(imageNum);
     img.style.backgroundImage = `url(./images/${imageNum}.png)`;
+    img.addEventListener('click', () => {
+      if (img.className === 'image 1') {
+        console.log('image one');
+        rainbowTheme();
+      } else if (img.className === 'image 2') {
+        console.log('image two');
+        blueCreamTheme();
+      } else if (img.className === 'image 3') {
+        console.log('image three');
+        lightTheme();
+      }
+    });
   });
   themePopUp.classList.toggle('themePopUpAfter');
   searchBar.className = 'searchBar';
@@ -61,12 +76,12 @@ lang.addEventListener('click', () => {
   });
 });
 
-//   searchBar.className = 'searchBar';
-//   locationPopUp.className = 'locationPopUp';
-//   themes.className = 'themes';
-//   themePopUp.className = 'themePopUp';
-//   languages.className = 'languages';
-//   languagePopUp.className = 'languagePopUp';
-// themes.forEach((theme) => {
-//   for (let i = 0; i < 3; i++) console.log(theme.i);
-// });
+function rainbowTheme() {
+  console.log('Rainbow');
+}
+function blueCreamTheme() {
+  console.log('BlueCream');
+}
+function lightTheme() {
+  console.log('Light');
+}
