@@ -1,3 +1,4 @@
+const clockTime = document.querySelector('.clockTime');
 const city = document.querySelector('.location');
 const theme = document.querySelector('.theme');
 const lang = document.querySelector('.lang');
@@ -196,3 +197,28 @@ function thaiLanguage() {
   today.textContent = 'วันนี้';
   tmrw.textContent = 'พรุ่งนี้';
 }
+
+//////////////Sets time and updates it every 1 second
+
+function currentTime() {
+  //////gets date, hours and minutes
+  let day;
+  let date = new Date();
+  let hours = date.getHours();
+  let minutes = date.getMinutes();
+  let seconds = date.getSeconds();
+  console.log(hours, minutes);
+
+  ///makes it 12 hour clock
+  day = hours < 12 ? 'AM' : 'PM';
+  hours = hours > 12 ? hours - 12 : hours;
+  hours = hours == 0 ? (hours = 12) : hours;
+  ////if less then 10, adds 0
+  hours = hours < 10 ? `0${hours}` : hours;
+  minutes = minutes < 10 ? `0${minutes}` : minutes;
+  seconds = seconds < 10 ? `0${seconds}` : seconds;
+
+  /////appends time to page
+  clockTime.textContent = `${hours}:${minutes}  ${day}`;
+}
+setInterval(currentTime, 1000);
