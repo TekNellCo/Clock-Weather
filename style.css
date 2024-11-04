@@ -386,6 +386,10 @@
   background-color: #00ff66;
   width: 40%;
   height: 100%;
+  background-position: center;
+  /* mix-blend-mode: multiply; */
+  object-fit: cover;
+  background-size: auto;
 }
 .spanish {
   display: none;

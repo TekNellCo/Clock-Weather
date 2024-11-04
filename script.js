@@ -76,8 +76,10 @@ lang.addEventListener('click', () => {
   });
   if (languagePopUp.children.length > 0) {
     hideLanguage();
+    console.log(languagePopUp);
   } else {
     languageChange();
+    console.log(languagePopUp);
   }
 });
 
@@ -92,6 +94,8 @@ let svgOne = document.querySelector('.svgOne');
 let svgTwo = document.querySelector('.svgTwo');
 let svgThree = document.querySelector('.svgThree');
 let days = document.querySelectorAll('.days');
+const today = document.querySelector('.today');
+const tmrw = document.querySelector('.tmrw');
 let hr = document.querySelector('.hr');
 let sun = document.querySelectorAll('.sun');
 let temp = document.querySelectorAll('.temp');
@@ -144,7 +148,7 @@ function lightTheme() {}
 ///////Adds popup selection for languages and triggers functions for language change
 function languageChange() {
   let english = document.createElement('div');
-  const spanish = document.createElement('div');
+  let spanish = document.createElement('div');
   const thai = document.createElement('div');
 
   languagePopUp.innerHTML = '';
@@ -160,6 +164,18 @@ function languageChange() {
   english.style = 'display : inline';
   spanish.style = 'display : inline';
   thai.style = 'display : inline';
+
+  // english.onclick = englishLanguage();
+  console.log(languagePopUp);
+  english.addEventListener('click', () => {
+    englishLanguage();
+  });
+  spanish.addEventListener('click', () => {
+    spanishLanguage();
+  });
+  thai.addEventListener('click', () => {
+    thaiLanguage();
+  });
 }
 
 function hideLanguage() {
@@ -167,9 +183,16 @@ function hideLanguage() {
 }
 
 /////Manipulates text on dom to specific languages
+function englishLanguage() {
+  today.textContent = 'Today';
+  tmrw.textContent = 'Tmrw';
+}
+function spanishLanguage() {
+  today.textContent = 'Hoy';
+  tmrw.textContent = 'Mañana';
+}
 
-function englishLanguage() {}
-
-function spanishLanguage() {}
-
-function thaiLanguage() {}
+function thaiLanguage() {
+  today.textContent = 'วันนี้';
+  tmrw.textContent = 'พรุ่งนี้';
+}
