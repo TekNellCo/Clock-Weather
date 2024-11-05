@@ -159,7 +159,8 @@
 
 .neonForecasts p {
   color: #099fff;
-  scale: 1.4;
+  scale: 2.4;
+  padding-top: 30%;
 }
 .neonForecasts svg {
   color: #e6fb04;
@@ -264,6 +265,8 @@
   background-color: transparent;
 }
 .locationPopUpAfter {
+  display: flex;
+  gap: 2%;
   z-index: 2;
 
   background-color: rgba(0, 0, 0, 0.388);
@@ -279,15 +282,19 @@
   overflow: hidden;
 }
 .searchBar {
-  position: absolute;
   background-color: white;
   width: 0%;
   height: 0%;
   transition: ease-in 0.1s;
 }
+.submitBtn {
+  display: none;
+  width: 20%;
+  height: 60%;
+}
 .searchBarAfter {
   transition: ease-in 0.1s;
-  width: 80%;
+  width: 70%;
   height: 60%;
   border: none;
   text-align: center;

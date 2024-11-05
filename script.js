@@ -11,6 +11,7 @@ const languagePopUp = document.querySelector('.languagePopUp');
 const languagePopUpAfter = document.querySelector('.languagesPopUpAfter');
 // const languages = document.querySelector('.languages');
 const image = document.querySelector('.image');
+const submitBtn = document.querySelector('.submitBtn');
 let imageNum = 0;
 
 ///////adds css classes to popups while resetting other buttons
@@ -21,11 +22,17 @@ city.addEventListener('click', () => {
   themePopUp.className = 'themePopUp';
   // languages.className = 'languages';
   languagePopUp.className = 'languagePopUp';
+
   hideLanguage();
   themes.forEach((theme) => {
     theme.classList.remove('themesAfter');
     theme.classList.remove('one');
   });
+  if (submitBtn.style.display == '') {
+    submitBtn.style.display = 'flex';
+  } else {
+    submitBtn.style.display = '';
+  }
 });
 theme.addEventListener('click', () => {
   imageNum = 0;
@@ -34,6 +41,7 @@ theme.addEventListener('click', () => {
       theme.innerHTML = '';
     } else {
     }
+    hideSubmitBtn();
     hideLanguage();
     imageNum++;
     theme.classList.toggle('themesAfter');
@@ -100,6 +108,8 @@ const tmrw = document.querySelector('.tmrw');
 let hr = document.querySelector('.hr');
 let sun = document.querySelectorAll('.sun');
 let temp = document.querySelectorAll('.temp');
+const todayTemp = document.querySelector('.todayTemp');
+const tmrwTemp = document.querySelector('.tmrwTemp');
 
 function rainbowTheme() {
   clockGradient.className = 'clockTime';
@@ -181,6 +191,9 @@ function languageChange() {
 function hideLanguage() {
   languagePopUp.innerHTML = '';
 }
+function hideSubmitBtn() {
+  submitBtn.style = 'display : none';
+}
 
 /////Manipulates text on dom to specific languages
 function englishLanguage() {
@@ -223,30 +236,47 @@ function currentTime() {
 setInterval(currentTime, 1000);
 
 ////initially runs api
-weatherFetch();
+// weatherFetch();
 ///////////////////Weather API
 function weatherFetch() {
   fetch(
-    'https://weather.visualcrossing.com/VisualCrossingWebServices/rest/services/timeline/westpalmbeach?key=KKVUK46W8Y8XW9S5YZJML55KE ',
+    `https://weather.visualcrossing.com/VisualCrossingWebServices/rest/services/timeline/${searchBar.value}?key=KKVUK46W8Y8XW9S5YZJML55KE `,
     { mode: 'cors' }
   )
-    .then(function (response) {
+    .then((response) => {
+      if (!response.ok) {
+        displayError();
+      }
       return response.json();
     })
     .then(function (response) {
       // console.log(response);
-      let temperature = response.currentConditions.temp;
-      let currentConditions = response.currentConditions.conditions;
-      print(temperature, currentConditions);
+      // console.log(response.days[1].temp);
+      let tdy = response.currentConditions.temp;
+      let tmw = response.days[1].temp;
+      print(tdy, tmw);
     });
 
-  function print(temperature, currentConditions) {
+  function print(tdy, tmw) {
     // temp.textContent = `${temperature}`;
-    console.log(temperature);
-    temp.forEach((temps) => {
-      temps.textContent = temperature;
-    });
+    todayTemp.textContent = tdy;
+    tmrwTemp.textContent = tmw;
   }
 }
 ////////fetches api every minute
-setInterval(weatherFetch, 60000);
+
+submitBtn.addEventListener('click', () => {
+  try {
+    searchBar.value;
+    weatherFetch();
+
+    setInterval(weatherFetch, 60000);
+  } catch (error) {
+    displayError();
+  }
+});
+
+function displayError() {
+  searchBar.value = '';
+  searchBar.placeholder = 'Error, enter a city';
+}
