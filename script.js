@@ -9,7 +9,6 @@ const themePopUp = document.querySelector('.themePopUp');
 const themes = document.querySelectorAll('.themes');
 const languagePopUp = document.querySelector('.languagePopUp');
 const languagePopUpAfter = document.querySelector('.languagesPopUpAfter');
-// const languages = document.querySelector('.languages');
 const image = document.querySelector('.image');
 const submitBtn = document.querySelector('.submitBtn');
 let imageNum = 0;
@@ -20,7 +19,6 @@ city.addEventListener('click', () => {
   searchBar.classList.toggle('searchBarAfter');
   themes.className = 'themes';
   themePopUp.className = 'themePopUp';
-  // languages.className = 'languages';
   languagePopUp.className = 'languagePopUp';
 
   hideLanguage();
@@ -45,8 +43,6 @@ theme.addEventListener('click', () => {
     hideLanguage();
     imageNum++;
     theme.classList.toggle('themesAfter');
-    // theme.classList.toggle('one');
-    // theme.classList.toggle(imageNum);
     let img = document.createElement('div');
     theme.append(img);
     img.className = 'image';
@@ -54,13 +50,10 @@ theme.addEventListener('click', () => {
     img.style.backgroundImage = `url(./images/${imageNum}.png)`;
     img.addEventListener('click', () => {
       if (img.className === 'image 1') {
-        console.log('image one');
         rainbowTheme();
       } else if (img.className === 'image 2') {
-        console.log('image two');
         blueCreamTheme();
       } else if (img.className === 'image 3') {
-        console.log('image three');
         lightTheme();
       }
     });
@@ -68,13 +61,11 @@ theme.addEventListener('click', () => {
   themePopUp.classList.toggle('themePopUpAfter');
   searchBar.className = 'searchBar';
   locationPopUp.className = 'locationPopUp';
-  // languages.className = 'languages';
   languagePopUp.className = 'languagePopUp';
 });
 
 lang.addEventListener('click', () => {
   languagePopUp.classList.toggle('languagePopUpAfter');
-  // languages.classList.toggle('languagesAfter');
   searchBar.className = 'searchBar';
   locationPopUp.className = 'locationPopUp';
   themes.className = 'themes';
@@ -82,13 +73,12 @@ lang.addEventListener('click', () => {
   themes.forEach((theme) => {
     theme.classList.remove('themesAfter');
     theme.classList.remove('one');
+    hideSubmitBtn();
   });
   if (languagePopUp.children.length > 0) {
     hideLanguage();
-    console.log(languagePopUp);
   } else {
     languageChange();
-    console.log(languagePopUp);
   }
 });
 
@@ -175,8 +165,6 @@ function languageChange() {
   spanish.style = 'display : inline';
   thai.style = 'display : inline';
 
-  // english.onclick = englishLanguage();
-  console.log(languagePopUp);
   english.addEventListener('click', () => {
     englishLanguage();
   });
@@ -218,7 +206,6 @@ function currentTime() {
   let hours = date.getHours();
   let minutes = date.getMinutes();
   let seconds = date.getSeconds();
-  console.log(hours, minutes);
 
   ///makes it 12 hour clock
   day = hours < 12 ? 'AM' : 'PM';
@@ -250,15 +237,15 @@ function weatherFetch() {
       return response.json();
     })
     .then(function (response) {
-      // console.log(response);
-      // console.log(response.days[1].temp);
       let tdy = response.currentConditions.temp;
       let tmw = response.days[1].temp;
+      const tdyIcon = response.currentConditions.icon;
+      const tmrwIcon = response.days[1].icon;
       print(tdy, tmw);
+      iconChange(tdyIcon, tmrwIcon);
     });
 
   function print(tdy, tmw) {
-    // temp.textContent = `${temperature}`;
     todayTemp.textContent = tdy;
     tmrwTemp.textContent = tmw;
   }
@@ -279,4 +266,24 @@ submitBtn.addEventListener('click', () => {
 function displayError() {
   searchBar.value = '';
   searchBar.placeholder = 'Error, enter a city';
+}
+
+const temperatureToday = document.querySelector('.temperatureToday');
+const neonForecastsTdy = document.querySelector('.neonForecastsTdy');
+const neonForecastsTmrw = document.querySelector('.neonForecastsTmrw');
+const tomorrowTemp = document.querySelector('.tomorrowTemp');
+
+/////////Changes icons depending on the weather
+function iconChange(tdyIcon, tmrwIcon) {
+  today.nextElementSibling.remove();
+  let imgTdy = document.createElement('img');
+  imgTdy.src = `./Icons/${tdyIcon}.png`;
+  neonForecastsTdy.insertBefore(imgTdy, temperatureToday);
+  imgTdy.className = 'appendImg';
+
+  tmrw.nextElementSibling.remove();
+  let imgTmrw = document.createElement('img');
+  imgTmrw.src = imgTdy.src = `./Icons/${tmrwIcon}.png`;
+  neonForecastsTmrw.insertBefore(imgTmrw, tomorrowTemp);
+  imgTmrw.className = 'appendImg';
 }
