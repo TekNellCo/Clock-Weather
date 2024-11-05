@@ -192,7 +192,7 @@ function hideLanguage() {
   languagePopUp.innerHTML = '';
 }
 function hideSubmitBtn() {
-  submitBtn.style = 'display : none';
+  submitBtn.style = 'display : ""';
 }
 
 /////Manipulates text on dom to specific languages
