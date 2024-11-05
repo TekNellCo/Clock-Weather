@@ -114,7 +114,6 @@ function rainbowTheme() {
     day.style = 'color:#c45bfe';
   });
   hr.style = 'border-color: #ff1ec6';
-  hr.style = 'border-color: #b41eff';
   sun.forEach((suns) => {
     suns.style = 'color:#e6fb04';
   });
@@ -199,9 +198,8 @@ function thaiLanguage() {
 }
 
 //////////////Sets time and updates it every 1 second
-
 function currentTime() {
-  //////gets date, hours and minutes
+  //////gets date, hours, minutes and seconds
   let day;
   let date = new Date();
   let hours = date.getHours();
@@ -221,4 +219,34 @@ function currentTime() {
   /////appends time to page
   clockTime.textContent = `${hours}:${minutes}  ${day}`;
 }
+////repeats clock every second
 setInterval(currentTime, 1000);
+
+////initially runs api
+weatherFetch();
+///////////////////Weather API
+function weatherFetch() {
+  fetch(
+    'https://weather.visualcrossing.com/VisualCrossingWebServices/rest/services/timeline/westpalmbeach?key=KKVUK46W8Y8XW9S5YZJML55KE ',
+    { mode: 'cors' }
+  )
+    .then(function (response) {
+      return response.json();
+    })
+    .then(function (response) {
+      // console.log(response);
+      let temperature = response.currentConditions.temp;
+      let currentConditions = response.currentConditions.conditions;
+      print(temperature, currentConditions);
+    });
+
+  function print(temperature, currentConditions) {
+    // temp.textContent = `${temperature}`;
+    console.log(temperature);
+    temp.forEach((temps) => {
+      temps.textContent = temperature;
+    });
+  }
+}
+////////fetches api every minute
+setInterval(weatherFetch, 60000);
