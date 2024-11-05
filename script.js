@@ -96,7 +96,7 @@ let days = document.querySelectorAll('.days');
 const today = document.querySelector('.today');
 const tmrw = document.querySelector('.tmrw');
 let hr = document.querySelector('.hr');
-let sun = document.querySelectorAll('.sun');
+// let sun = document.querySelectorAll('.sun');
 let temp = document.querySelectorAll('.temp');
 const todayTemp = document.querySelector('.todayTemp');
 const tmrwTemp = document.querySelector('.tmrwTemp');
@@ -114,9 +114,9 @@ function rainbowTheme() {
     day.style = 'color:#c45bfe';
   });
   hr.style = 'border-color: #ff1ec6';
-  sun.forEach((suns) => {
-    suns.style = 'color:#e6fb04';
-  });
+  // sun.forEach((suns) => {
+  //   suns.style = 'color:#e6fb04';
+  // });
   temp.forEach((temps) => {
     temps.style = 'color: #099fff';
   });
@@ -134,9 +134,9 @@ function blueCreamTheme() {
     day.style = 'color:#ffffff';
   });
   hr.style = 'border-color: #b41eff';
-  sun.forEach((suns) => {
-    suns.style = 'color:#ff1ec6';
-  });
+  // sun.forEach((suns) => {
+  //   suns.style = 'color:#ff1ec6';
+  // });
   temp.forEach((temps) => {
     temps.style = 'color: white';
   });
