@@ -318,7 +318,7 @@
 }
 .themesAfter {
   transition: ease-in 0.1s;
-  width: 33%;
+  width: 50%;
   height: 100%;
   /* background-color: #00ff66; */
   /* border: 1px solid black; */
@@ -387,25 +387,30 @@
 } */
 .english {
   display: none;
-  background-color: #00ff66;
+  background: url(./images/english.png);
   width: 40%;
   height: 100%;
   background-position: center;
   /* mix-blend-mode: multiply; */
   object-fit: cover;
-  background-size: auto;
+  background-size: contain;
 }
 .spanish {
   display: none;
-  background-color: #2600ff;
+  background: url(./images/spanish.webp);
   width: 40%;
   height: 100%;
+  background-position: center;
+  background-size: contain;
 }
 .thai {
   display: none;
-  background-color: #ff000d;
+  background: url(./images/thai.webp);
+  /* background-color: #ff000d; */
   width: 40%;
   height: 100%;
+  background-position: center;
+  background-size: contain;
 }
 .red {
   fill: red;
