@@ -4,6 +4,8 @@ blot https://www.pexels.com/photo/photo-of-multicolored-abstract-painting-119374
 
 First attempt at using API's and making a digital clock
 
+--------THIS LOOKS ATROCIOUS ON MOBILE. I HAVE BEEN USING CHROME TOOLS TO TEST AND IT LOOKS NOTHING LIKE IT------------------
+
 Overall im happy how it came out. The hardest part was probably the design itself. Since im not studying UI/UX I had to design what I felt looked good. I originally planned on doing 3 designs but I want to move on to more projects and not waste time on the last design.
 
 Things I learned :
