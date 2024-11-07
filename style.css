@@ -64,6 +64,7 @@
   --Black-Container: linear-gradient(to left top, #161b1e 10%, #31363b 90%);
 }
 .html {
+  color-scheme: dark light;
   height: 100%;
   width: 100%;
   overflow: hidden;
