@@ -199,8 +199,8 @@
   -webkit-box-align: center;
   -ms-flex-align: center;
   align-items: center;
-  /* justify-content: space-evenly; */
-  gap: 10%;
+  justify-content: space-evenly;
+  /* gap: 2%; */
   width: 49%;
   height: 100%;
   /* background-color: #099fff; */
@@ -365,6 +365,7 @@
   overflow: hidden;
 }
 .searchBar {
+  color: black;
   background-color: white;
   width: 0%;
   height: 0%;
@@ -521,19 +522,20 @@
   background: url(./images/english.png);
   width: 40%;
   height: 100%;
+  flex: 1;
   background-position: center;
   /* mix-blend-mode: multiply; */
-  -o-object-fit: cover;
-  object-fit: cover;
-  background-size: contain;
+  background-size: cover;
 }
 .spanish {
   display: none;
   background: url(./images/spanish.webp);
   width: 40%;
   height: 100%;
+  flex: 1;
   background-position: center;
-  background-size: contain;
+
+  background-size: cover;
 }
 .thai {
   display: none;
@@ -541,8 +543,9 @@
   /* background-color: #ff000d; */
   width: 40%;
   height: 100%;
-  background-position: center;
-  background-size: contain;
+  flex: 1;
+  background-position: center calc(50% - 5px);
+  background-size: cover;
 }
 .red {
   fill: red;
@@ -555,4 +558,76 @@
   -webkit-transform: translate(0, -16%);
   -ms-transform: translate(0, -16%);
   transform: translate(0, -16%);
+}
+
+@media (min-height: 700px) {
+  .neonClockContainer {
+    padding-top: 4%;
+  }
+}
+
+@media (min-width: 1080px) {
+  .neonClockContainer {
+    padding-top: 2%;
+  }
+  .clockTime {
+    font-size: 4rem;
+  }
+  .days {
+    font-size: 3rem;
+  }
+  .appendImg {
+    scale: 2;
+  }
+  .temp {
+    font-size: 2rem;
+  }
+  .submitBtn {
+    font-size: 1.6rem;
+  }
+  .locationPopUpAfter {
+    width: 50%;
+    left: 50%;
+    transform: translate(-50%, 0);
+  }
+  .themePopUpAfter {
+    width: 50%;
+    left: 50%;
+    transform: translate(-50%, 0);
+  }
+  .languagePopUpAfter {
+    width: 50%;
+    left: 50%;
+    transform: translate(-50%, 0);
+  }
+}
+@media (min-width: 1440px) {
+  .neonClockContainer {
+    width: 40%;
+  }
+  .days {
+    font-size: 4rem;
+  }
+  .bottomContainer {
+    width: 40%;
+    height: 14%;
+  }
+  .locationPopUpAfter {
+    width: 40%;
+    left: 50%;
+    transform: translate(-50%, 32%);
+  }
+  .searchBarAfter {
+    font-size: 1.4rem;
+  }
+  .themePopUpAfter {
+    width: 40%;
+    left: 50%;
+    transform: translate(-50%, 32%);
+  }
+  .languagePopUpAfter {
+    width: 40%;
+    left: 50%;
+    transform: translate(-50%, 32%);
+  }
 }
